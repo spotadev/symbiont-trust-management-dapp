@@ -1,3 +1,16 @@
+# Note
+
+9th Feb 2024: this project is a rewrite of:
+
+    utu-endorse-nextid-old
+
+It has just started and it brings a different look and feel and uses vite and redux
+instead of using create-react-app with rewired and using a convoluted global context.
+
+This note will be updated when the rewrite has occured.
+
+This project is about being able to manage a next.id DID and add social media handles to it.  It also allows for UTU endorsements and signal on next.id DIDs.
+
 # vite-template-redux
 
 Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)

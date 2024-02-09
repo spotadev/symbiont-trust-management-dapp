@@ -4,7 +4,7 @@ import { arbitrum, mainnet, polygonMumbai } from "wagmi/chains"
 import { createWeb3Modal } from "@web3modal/wagmi"
 import appStyle from './App.module.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from "./app/home/Home";
+import Home from "./app/components/home/Home";
 import { useEffect, useLayoutEffect } from "react";
 
 const projectId = import.meta.env.VITE_APP_WALLET_CONNECT_PROJECT_ID;
@@ -24,21 +24,9 @@ const wagmiConfig = createConfig({
   },
 })
 
-console.log('YYYYYY');
 createWeb3Modal({ wagmiConfig, projectId });
-console.log('ZZZZZZ');
 
 const App = () => {
-
-  useEffect(() => {
-    try {
-      console.log('before createWeb3Modal');
-      // createWeb3Modal({ wagmiConfig, projectId });
-      console.log('called createWeb3Modal');
-    } catch (error) {
-      console.error('Error in useEffect:', error);
-    }
-  }, [projectId, wagmiConfig]);
 
   return (
     <WagmiProvider config={wagmiConfig}>
@@ -69,10 +57,5 @@ const App = () => {
     </WagmiProvider>
   )
 }
-
-/**
- * <Counter />
- * <Quotes />
- */
 
 export default App

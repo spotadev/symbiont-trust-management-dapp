@@ -2,7 +2,7 @@
 docs/how_I_created_this_project.txt
 ====================================================================================================
 
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-utu-endorse-nextid2
+npx degit reduxjs/redux-templates/packages/vite-template-redux utu-endorse.nextid
 
 ----------------------------------------------------------------------------------------------------
 
@@ -14,6 +14,6 @@ Go to:
 
      https://cloud.walletconnect.com/sign-in
 
-and get a wallet how_I_created_this_project
+and get a wallet id.
 
 ----------------------------------------------------------------------------------------------------
