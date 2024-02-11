@@ -39,7 +39,7 @@ const getAvatarStatus = async (
   platform: string,
   exact: boolean
 ): Promise<AvatarStatusResponse> => {
-  const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
+  const baseUrl = import.meta.env.VITE_APP_PROOF_SERVICE_BASE_URL;
 
   if (!baseUrl) {
     throw new Error('Need VITE_APP_PROOF_SERVICE_BASE_URL set in env file');

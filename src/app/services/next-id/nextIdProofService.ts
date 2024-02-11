@@ -41,7 +41,7 @@ const getProofPayloadResponse =
   async (platform: string, handle: string, publicKey: string): Promise<ProofPayloadResponse> => {
 
     // const baseUrl = 'https://proof-service.next.id';
-    const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
+    const baseUrl = import.meta.env.VITE_APP_PROOF_SERVICE_BASE_URL;
 
     if (!baseUrl) {
       throw new Error('Could not read env properties');

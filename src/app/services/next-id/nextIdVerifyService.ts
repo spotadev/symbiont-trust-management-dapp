@@ -12,7 +12,7 @@ const _verifyEthereumProof = async (
   uuid: string
 ): Promise<boolean> => {
 
-  const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
+  const baseUrl = import.meta.env.VITE_APP_PROOF_SERVICE_BASE_URL;
 
   if (!baseUrl) {
     throw new Error('Could not read env properties');
@@ -79,7 +79,7 @@ const verifyTwitterProof = async (
   uuid: string,
   createdAt: string
 ): Promise<void> => {
-  const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
+  const baseUrl = import.meta.env.VITE_APP_PROOF_SERVICE_BASE_URL;
   const url = '/v1/proof';
   const accessControlAllowOrigin = false;
 
@@ -133,7 +133,7 @@ const verifyGithubProof = async (
     throw new Error(errrorMessage);
   }
 
-  const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
+  const baseUrl = import.meta.env.VITE_APP_PROOF_SERVICE_BASE_URL;
 
   if (!baseUrl) {
     throw new Error('Could not read env properties');

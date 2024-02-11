@@ -107,7 +107,7 @@ export interface IFeedback {
 // =================================================================================================
 
 const utuBaseApiUrl =
-  process.env.VITE_APP_UTU_API_BASE_URL;
+  import.meta.env.VITE_APP_UTU_API_BASE_URL;
 
 const loginToUtu = async (): Promise<UtuAuthData> => {
   if (!utuBaseApiUrl) {

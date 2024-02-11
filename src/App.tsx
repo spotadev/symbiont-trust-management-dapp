@@ -4,8 +4,11 @@ import { arbitrum, mainnet, polygonMumbai } from "wagmi/chains"
 import { createWeb3Modal } from "@web3modal/wagmi"
 import appStyle from './App.module.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from "./app/components/pages/home/Home";
+
 import { useEffect, useLayoutEffect } from "react";
+import NextIdManagement from "./app/components/pages/next-Id-management/NextIdManagement";
+import About from "./app/components/pages/about/about";
+import Home from "./app/components/pages/home/Home";
 
 declare global {
   namespace JSX {
@@ -20,6 +23,7 @@ const projectId = import.meta.env.VITE_APP_WALLET_CONNECT_PROJECT_ID;
 if (!projectId) {
   throw new Error('Please copy .env.sample to .env and set variables');
 }
+
 
 const chains = [polygonMumbai, mainnet, arbitrum] as const;
 
@@ -36,18 +40,17 @@ createWeb3Modal({ wagmiConfig, projectId });
 
 const App = () => {
 
+  console.log('VITE_APP_ENVIRONMENT', import.meta.env.VITE_APP_ENVIRONMENT);
+
   return (
     <WagmiProvider config={wagmiConfig}>
       <div className={appStyle.centeredPage}>
-        <div style={{
-          paddingLeft: '20px', paddingRight: '20px', paddingTop: '10px',
-          paddingBottom: '20px', backgroundColor: 'black'
-        }}>
+        <div className={appStyle.theme}>
           <div style={{
             display: 'flex', justifyContent: 'space-between', alignItems: 'center'
           }}>
             <div>
-              <span style={{ fontWeight: 'bold', color: 'white' }}>Next.id / UTU Endorse</span>
+              <span style={{ fontWeight: 'bold', color: 'white' }}>Next ID / UTU Management</span>
             </div>
             <div>
               <w3m-button />
@@ -57,12 +60,14 @@ const App = () => {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/next-id-management" element={<NextIdManagement />} />
               </Routes>
             </BrowserRouter>
           </div>
         </div>
       </div>
-    </WagmiProvider>
+    </WagmiProvider >
   )
 }
 

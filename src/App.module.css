@@ -1,3 +1,31 @@
+.theme {
+  color: whitesmoke;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background-color: black;
+}
+
+.link {
+  color: gold;
+}
+
+@media print {
+  .theme {
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-color: white;
+  }
+
+  .link {
+    color: purple;
+  }
+}
+
 .centeredPage {
   width: 800px;
   margin: 0 auto;
@@ -8,6 +36,14 @@
   padding-right: 10px;
   padding-bottom: 10px;
   background-color: whitesmoke;
+}
+
+/* Media query for screens narrower than 800px (e.g., phones) */
+@media only screen and (max-width: 800px) {
+  .centeredPage {
+    width: 100%;
+    /* Set width to 100% for smaller screens */
+  }
 }
 
 button {

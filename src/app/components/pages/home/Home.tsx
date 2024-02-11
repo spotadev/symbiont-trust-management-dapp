@@ -1,229 +1,82 @@
 import { Link } from "react-router-dom";
-import { useAccount } from "wagmi";
-import { useEffect } from "react";
-
-import {
-  IdsItem,
-  Platform,
-  Proof,
-  nextIdCheckAvatarService
-} from "../../../services/next-id/nextIdCheckAvatarService";
-
-import {
-  avatarStatusResponseHelper
-} from "../../../helpers/avatar-status-response/avatarStatusResponseHelper";
-
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../store/store";
-
-import {
-  homeUpdateGithubProofVerified,
-  homeUpdateIdsItem,
-  homeUpdatePlatformsNeedToConnectTo,
-  homeUpdateValidProofs,
-  homeUpdateXProofVerified
-} from "../../../store/slices/homeSlice";
-import ShowNextId from "../../shared/ShowNextId";
-import GuiPlatform from "./children/GuiPlatform";
-
-import ProofPayloadResponse, {
-  nextIdProofService
-} from "../../../services/next-id/nextIdProofService";
-
-import { nextIdVerifyService } from "../../../services/next-id/nextIdVerifyService";
-
+import appStyle from '../../../../App.module.css';
 
 export default function Home() {
-
-  // hooks below -----------------------------------------------------------------------------------
-  // this dispatch method is used for updating values in the slices of the redux store 
-  const dispatch = useDispatch();
-
-  const { address, isConnected } = useAccount();
-
-  // readonly values from redux below --------------------------------------------------------------
-  const idsItem = useSelector((state: RootState) => state.home.idsItem);
-  const validProofs = useSelector((state: RootState) => state.home.validProofs);
-  const walletEthereumVerified = useSelector((state: RootState) => state.home.walletEthereumVerified);
-  const xProofVerified = useSelector((state: RootState) => state.home.xProofVerified);
-  const githubProofVerified = useSelector((state: RootState) => state.home.githubProofVerified);
-  const platformsNeedToConnectTo = useSelector((state: RootState) => state.home.platformsNeedToConnectTo);
-
-  const getIdsItemWithSameEthereumAddressAsWallet = (idsItems: IdsItem[], address: string) => {
-    const lowerCaseAddress = address.toLowerCase();
-
-    for (let idsItem of idsItems) {
-      for (let proof of idsItem.proofs) {
-        console.log('proof', proof);
-        if (proof.platform === 'ethereum' && proof.identity === lowerCaseAddress) {
-          return idsItem;
-        }
-      }
-    }
-    return null;
-  }
-
-  // methods below ---------------------------------------------------------------------------------
-  const savePlatformVerifiedStates = (validProofs: Proof[]) => {
-    for (let proof of validProofs) {
-      switch (proof.platform) {
-        case 'twitter':
-          homeUpdateXProofVerified(true);
-          break;
-        case 'github':
-          homeUpdateGithubProofVerified(true);
-          break;
-      }
-    }
-  }
-
-  const reset = () => {
-    dispatch(homeUpdateIdsItem(null));
-    dispatch(homeUpdateValidProofs([]));
-    savePlatformVerifiedStates([]);
-  }
-
-  const getAvatarStatusResponse = async (address: string) => {
-    const platform = 'ethereum';
-    const exact = true;
-
-    // This is a network call
-    const avatarStatusResponse =
-      await nextIdCheckAvatarService.getAvatarStatus(address, platform, exact);
-
-    console.log('avatarStatusResponse', avatarStatusResponse);
-
-    const idsItems: IdsItem[] = avatarStatusResponse.ids;
-
-    if (idsItems.length == 0) {
-      reset();
-      return;
-    }
-
-    const idsItem = getIdsItemWithSameEthereumAddressAsWallet(idsItems, address);
-
-    if (idsItem == null) {
-      throw new Error('Unexpected Error: could not find IdsItem with wallet address proof:' +
-        address);
-    }
-
-    const validProofs = avatarStatusResponseHelper.getValidProofs(idsItem);
-
-    const _hasValidEthereumProof =
-      avatarStatusResponseHelper.hasValidEthereumProof(validProofs, address);
-
-    if (_hasValidEthereumProof) {
-      dispatch(homeUpdateIdsItem(idsItem));
-      dispatch(homeUpdateValidProofs(validProofs));
-      savePlatformVerifiedStates(validProofs);
-    }
-    else {
-      reset();
-      return;
-    }
-
-    const supportedPlatforms = ['twitter', 'github'];
-
-    const platformsNeedToConnectTo: Platform[] =
-      avatarStatusResponseHelper.getPlatformsNeedToConnectTo(
-        idsItem, supportedPlatforms);
-
-    console.log('platformsNeedToConnectTo', platformsNeedToConnectTo);
-    dispatch(homeUpdatePlatformsNeedToConnectTo(platformsNeedToConnectTo));
-  }
-
-  const createAvatarWithEthereumAddress = async () => {
-    const platform = 'ethereum';
-    const handle = address;
-
-    if (!handle) {
-      return new Error('Wallet is not connected');
-    }
-
-    const response: { proofPayloadResponse: ProofPayloadResponse, publicKey: string } =
-      await nextIdProofService.getNextIdProofPayload(platform, handle);
-
-    const proofPayloadResponse = response.proofPayloadResponse;
-    const publicKey = response.publicKey;
-
-    const verifiedProof =
-      await nextIdVerifyService.verifyEthereumProof(proofPayloadResponse, publicKey, address);
-
-    dispatch(homeUpdateGithubProofVerified(verifiedProof));
-  }
-
-  // useEffect methods below ----------------------------------------------------------------------=
-  useEffect(() => {
-    if (address) {
-      getAvatarStatusResponse(address);
-    }
-  }, [address]);
-
-  // JSX methods below -----------------------------------------------------------------------------
-  const getIsConnectedAndNotWalletEthereumVerifiedJSX = () => {
-    return (
-      <>
-        <div>
-          You do not yet have a next.ID associated with your wallet address.
-          Click the button below to do so.
-          <p>
-            <button onClick={createAvatarWithEthereumAddress}>
-              Create next.ID avatar and add your wallet address to it
-            </button>
-          </p>
-        </div>
-      </>
-    );
-  }
-
-  const getIsConnectedAndWalletEthereumVerifiedJSX = () => {
-    return (
-      <>
-        <ShowNextId title='Your next.id DID' idsItem={idsItem} validProofs={validProofs} />
-        <br /><hr /><br />
-        <div>
-          <span style={{ fontWeight: 'bold' }}>Link Platform:</span>
-        </div>
-        {platformsNeedToConnectTo.map((platform, index) => (
-          <div key={platform.name} style={{ paddingTop: '20px' }}>
-            <GuiPlatform platform={platform} />
-          </div>
-        ))}
-      </>
-    );
-  }
-
-  const getAvatarJSX = () => {
-    if (isConnected && walletEthereumVerified) {
-      return getIsConnectedAndWalletEthereumVerifiedJSX();
-    }
-    else if (isConnected && !walletEthereumVerified) {
-      return getIsConnectedAndNotWalletEthereumVerifiedJSX();
-    }
-    else {
-      return '';
-    }
-  }
 
   return (
     <div>
       <div style={{ textAlign: 'right' }}>
+        <Link to={'/next-id-management'}>
+          <span className={appStyle.link}>
+            Avatar Management
+          </span>
+        </Link>
+        &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/find-next-id-avatar'}>
-          <span style={{ color: 'gold' }}>
-            "UTU Endorse / Give UTU Signal / Get UTU Signal"
+          <span className={appStyle.link}>
+            UTU Trust
           </span>
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/about'}>
-          <span style={{ color: 'gold' }}>
+          <span className={appStyle.link}>
             About
           </span>
         </Link>
       </div>
-      <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
-        Next.id avatar DID Management
+      <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px', paddingBottom: '20px' }}>
+        Home
       </div>
-      {getAvatarJSX()}
+      <div>
+        Next ID is a decentralised ID (DID) called an avatar.
+        <p>
+          The idea is you can connect both your wallet and some social media handles to it:
+          <ul>
+            <li>twitter X</li>
+            <li>github</li>
+          </ul>
+        </p>
+        <p>
+          You need to verify that you are the owner of the social media handles before you can
+          add them to your avatar.
+        </p>
+        <p>
+          What this means is that once you have created your DID avatar and connected it to a
+          social media site that supports it, that other users will see an icon next to your
+          comment which shows that you have a DID.  Users can then click on the icon to see your
+          avatar profile.  Your avatar profile will show the social media handles associated with
+          your avatar.
+        </p>
+        <p>
+          This is a form of vetting that you are a real person.
+        </p>
+        <p>
+          Apart from allowing you to manage your Next avatar DID this software is also integrated
+          with the UTU Trust network and allows you to search for a DID and add an endorsement
+          or Comment about the DID.
+        </p>
+        <p>
+          UTU Trust is about seeing signal or endorsements done by people in your immediate social
+          media networks and the extended network of your connections.
+        </p>
+        <p>
+          The idea is that you trust endorsements and signal from people in your trusted networks
+          more than from a stranger.
+        </p>
+        <p>
+          It is the combination of Next avatar DIDs and UTU Trust that reduce the distortions
+          introduced by malicious actors.
+        </p>
+        <p>
+          See further details in:
+          &nbsp;&nbsp;
+          <Link to={'/about'}>
+            <span className={appStyle.link}>
+              About
+            </span>
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

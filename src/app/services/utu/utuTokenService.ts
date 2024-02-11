@@ -6,10 +6,10 @@ interface EthereumProvider {
 }
 
 const utuTokenContractAddress =
-  process.env.VITE_APP_UTU_TOKEN_CONTRACT_ADDRESS;
+  import.meta.env.VITE_APP_UTU_TOKEN_CONTRACT_ADDRESS;
 
 const polygonChainId =
-  process.env.VITE_APP_POLYGON_CHAIN_ID;
+  import.meta.env.VITE_APP_POLYGON_CHAIN_ID;
 
 const getUttContract = async () => {
   if (!polygonChainId) {
