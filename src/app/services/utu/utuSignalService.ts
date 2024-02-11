@@ -107,15 +107,16 @@ export interface IFeedback {
 // =================================================================================================
 
 const utuBaseApiUrl =
-  process.env.REACT_APP_UTU_API_BASE_URL;
+  process.env.VITE_APP_UTU_API_BASE_URL;
 
 const loginToUtu = async (): Promise<UtuAuthData> => {
   if (!utuBaseApiUrl) {
-    throw new Error('REACT_APP_UTU_API_BASE_URL missing from env file');
+    throw new Error('VITE_APP_UTU_API_BASE_URL missing from env file');
   }
 
   const cookies = false;
-  const provider: any = window.ethereum;
+  const _window: any = window;
+  const provider: any = _window.ethereum;
   const ethersProvider = new ethers.BrowserProvider(provider);
   const signer = await ethersProvider.getSigner();
   const address = await signer.getAddress();
@@ -176,7 +177,7 @@ const giveSignal = (
   stars: number
 ): Promise<any> => {
   if (!utuBaseApiUrl) {
-    throw new Error('REACT_APP_UTU_API_BASE_URL missing from env file');
+    throw new Error('VITE_APP_UTU_API_BASE_URL missing from env file');
   }
 
   const apiFeedbackAddress = 'core-api-v2/feedback';

@@ -13,6 +13,7 @@ import { signMessage } from '@wagmi/core'
 import { RecoverPublicKeyParameters, hashMessage, recoverPublicKey } from 'viem'
 import { platform } from "os";
 import axios from "axios";
+import { wagmiConfig } from "../../../App";
 
 export interface PostContent {
   default: string;
@@ -40,7 +41,7 @@ const getProofPayloadResponse =
   async (platform: string, handle: string, publicKey: string): Promise<ProofPayloadResponse> => {
 
     // const baseUrl = 'https://proof-service.next.id';
-    const baseUrl = process.env.REACT_APP_PROOF_SERVICE_BASE_URL;
+    const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
 
     if (!baseUrl) {
       throw new Error('Could not read env properties');
@@ -81,7 +82,7 @@ const getNextIdProofPayload =
     handle: string,
   ): Promise<{ proofPayloadResponse: ProofPayloadResponse, publicKey: string }> => {
     const message = 'next.id rocks';
-    const signature = await signMessage({ message: message });
+    const signature = await signMessage(wagmiConfig, { message: message });
     const messageHash = hashMessage(message);
     console.log('message', message);
     console.log('signature', signature);

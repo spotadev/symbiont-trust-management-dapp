@@ -2,6 +2,7 @@ import { signMessage } from '@wagmi/core'
 import { axiosHelper } from "../../helpers/axios/axiosHelper";
 import ProofPayloadResponse from "./nextIdProofService";
 import axios from 'axios';
+import { wagmiConfig } from '../../../App';
 
 const _verifyEthereumProof = async (
   signedPayloadBase64: string,
@@ -11,7 +12,7 @@ const _verifyEthereumProof = async (
   uuid: string
 ): Promise<boolean> => {
 
-  const baseUrl = process.env.REACT_APP_PROOF_SERVICE_BASE_URL;
+  const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
 
   if (!baseUrl) {
     throw new Error('Could not read env properties');
@@ -54,7 +55,7 @@ const verifyEthereumProof = async (
   const message = proofPayloadResponse.sign_payload;
 
   // sign payload and convert signature to base64
-  const signedPayload = await signMessage({ message: message });
+  const signedPayload = await signMessage(wagmiConfig, { message: message });
   console.log('signedPayload', signedPayload);
   const signatureWithoutPrefix = signedPayload.slice(2);
   const bufferSignatureWithoutPrefix = Buffer.from(signatureWithoutPrefix, 'hex');
@@ -78,7 +79,7 @@ const verifyTwitterProof = async (
   uuid: string,
   createdAt: string
 ): Promise<void> => {
-  const baseUrl = process.env.REACT_APP_PROOF_SERVICE_BASE_URL;
+  const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
   const url = '/v1/proof';
   const accessControlAllowOrigin = false;
 
@@ -132,7 +133,7 @@ const verifyGithubProof = async (
     throw new Error(errrorMessage);
   }
 
-  const baseUrl = process.env.REACT_APP_PROOF_SERVICE_BASE_URL;
+  const baseUrl = process.env.VITE_APP_PROOF_SERVICE_BASE_URL;
 
   if (!baseUrl) {
     throw new Error('Could not read env properties');

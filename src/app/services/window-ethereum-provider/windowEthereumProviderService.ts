@@ -3,7 +3,8 @@ interface EthereumProvider {
 }
 
 const getSelectedAddress = async (): Promise<string | null> => {
-  const provider = window.ethereum as EthereumProvider | undefined;
+  const _window: any = window;
+  const provider = _window.ethereum as EthereumProvider | undefined;
 
   if (provider) {
     const accounts = await provider.request({ method: 'eth_requestAccounts' });
@@ -21,7 +22,9 @@ const getSelectedAddress = async (): Promise<string | null> => {
 }
 
 const getPublicKey = async (selectedAddress: string): Promise<string | null> => {
-  const provider = window.ethereum as EthereumProvider | undefined;
+
+  const _window: any = window;
+  const provider = _window.ethereum as EthereumProvider | undefined;
 
   if (provider) {
     const publicKey =

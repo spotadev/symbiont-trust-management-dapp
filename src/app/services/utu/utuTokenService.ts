@@ -1,22 +1,32 @@
 import { ethers } from "ethers";
 import uttAbi from "../../contracts/UTT.abi.json";
 
+interface EthereumProvider {
+  request: (args: { method: string, params?: any[] }) => Promise<any>;
+}
+
 const utuTokenContractAddress =
-  process.env.REACT_APP_UTU_TOKEN_CONTRACT_ADDRESS;
+  process.env.VITE_APP_UTU_TOKEN_CONTRACT_ADDRESS;
 
 const polygonChainId =
-  process.env.REACT_APP_POLYGON_CHAIN_ID;
+  process.env.VITE_APP_POLYGON_CHAIN_ID;
 
 const getUttContract = async () => {
   if (!polygonChainId) {
-    throw new Error('REACT_APP_POLYGON_CHAIN_ID missing from env file');
+    throw new Error('VITE_APP_POLYGON_CHAIN_ID missing from env file');
   }
 
   if (!utuTokenContractAddress) {
-    throw new Error('REACT_APP_UTU_TOKEN_CONTRACT_ADDRESS missing from env file');
+    throw new Error('VITE_APP_UTU_TOKEN_CONTRACT_ADDRESS missing from env file');
   }
 
-  const provider: any = window.ethereum;
+  const _window: any = window;
+  const provider = _window.ethereum as EthereumProvider | undefined;
+
+  if (!provider) {
+    throw new Error('window.ethereum is not set.');
+  }
+
   const polygonChainIdHex = ethers.toQuantity(polygonChainId);
 
   await provider.request({

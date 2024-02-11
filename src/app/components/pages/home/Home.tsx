@@ -24,6 +24,13 @@ import {
   homeUpdateXProofVerified
 } from "../../../store/slices/homeSlice";
 import ShowNextId from "../../shared/ShowNextId";
+import GuiPlatform from "./children/GuiPlatform";
+
+import ProofPayloadResponse, {
+  nextIdProofService
+} from "../../../services/next-id/nextIdProofService";
+
+import { nextIdVerifyService } from "../../../services/next-id/nextIdVerifyService";
 
 
 export default function Home() {
@@ -33,7 +40,6 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const { address, isConnected } = useAccount();
-
 
   // readonly values from redux below --------------------------------------------------------------
   const idsItem = useSelector((state: RootState) => state.home.idsItem);
@@ -71,6 +77,12 @@ export default function Home() {
     }
   }
 
+  const reset = () => {
+    dispatch(homeUpdateIdsItem(null));
+    dispatch(homeUpdateValidProofs([]));
+    savePlatformVerifiedStates([]);
+  }
+
   const getAvatarStatusResponse = async (address: string) => {
     const platform = 'ethereum';
     const exact = true;
@@ -80,20 +92,15 @@ export default function Home() {
       await nextIdCheckAvatarService.getAvatarStatus(address, platform, exact);
 
     console.log('avatarStatusResponse', avatarStatusResponse);
-    // setAvatarStatusResponse(avatarStatusResponse);
 
     const idsItems: IdsItem[] = avatarStatusResponse.ids;
 
     if (idsItems.length == 0) {
-      // setPlatformVerifiedStates([]);
-
-      // setProofs([]);
-      // setIdsItem(null);
+      reset();
       return;
     }
 
     const idsItem = getIdsItemWithSameEthereumAddressAsWallet(idsItems, address);
-
 
     if (idsItem == null) {
       throw new Error('Unexpected Error: could not find IdsItem with wallet address proof:' +
@@ -111,9 +118,7 @@ export default function Home() {
       savePlatformVerifiedStates(validProofs);
     }
     else {
-      dispatch(homeUpdateIdsItem(null));
-      dispatch(homeUpdateValidProofs([]));
-      savePlatformVerifiedStates([]);
+      reset();
       return;
     }
 
@@ -127,6 +132,26 @@ export default function Home() {
     dispatch(homeUpdatePlatformsNeedToConnectTo(platformsNeedToConnectTo));
   }
 
+  const createAvatarWithEthereumAddress = async () => {
+    const platform = 'ethereum';
+    const handle = address;
+
+    if (!handle) {
+      return new Error('Wallet is not connected');
+    }
+
+    const response: { proofPayloadResponse: ProofPayloadResponse, publicKey: string } =
+      await nextIdProofService.getNextIdProofPayload(platform, handle);
+
+    const proofPayloadResponse = response.proofPayloadResponse;
+    const publicKey = response.publicKey;
+
+    const verifiedProof =
+      await nextIdVerifyService.verifyEthereumProof(proofPayloadResponse, publicKey, address);
+
+    dispatch(homeUpdateGithubProofVerified(verifiedProof));
+  }
+
   // useEffect methods below ----------------------------------------------------------------------=
   useEffect(() => {
     if (address) {
@@ -134,11 +159,20 @@ export default function Home() {
     }
   }, [address]);
 
-
   // JSX methods below -----------------------------------------------------------------------------
   const getIsConnectedAndNotWalletEthereumVerifiedJSX = () => {
     return (
-      ''
+      <>
+        <div>
+          You do not yet have a next.ID associated with your wallet address.
+          Click the button below to do so.
+          <p>
+            <button onClick={createAvatarWithEthereumAddress}>
+              Create next.ID avatar and add your wallet address to it
+            </button>
+          </p>
+        </div>
+      </>
     );
   }
 

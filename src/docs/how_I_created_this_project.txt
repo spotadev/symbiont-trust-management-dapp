@@ -6,7 +6,9 @@ npx degit reduxjs/redux-templates/packages/vite-template-redux utu-endorse.nexti
 
 ----------------------------------------------------------------------------------------------------
 
-npm install @web3modal/wagmi wagmi viem
+npm install @web3modal/wagmi wagmi viem axios ethers qs
+
+npm install --save-dev @types/qs
 
 ----------------------------------------------------------------------------------------------------
 

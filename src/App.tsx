@@ -7,6 +7,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from "./app/components/pages/home/Home";
 import { useEffect, useLayoutEffect } from "react";
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'w3m-button': any // specify the JSX.Element interface or provide a type for your component
+    }
+  }
+}
+
 const projectId = import.meta.env.VITE_APP_WALLET_CONNECT_PROJECT_ID;
 
 if (!projectId) {
@@ -15,7 +23,7 @@ if (!projectId) {
 
 const chains = [polygonMumbai, mainnet, arbitrum] as const;
 
-const wagmiConfig = createConfig({
+export const wagmiConfig = createConfig({
   chains: chains,
   transports: {
     [polygonMumbai.id]: http(),
