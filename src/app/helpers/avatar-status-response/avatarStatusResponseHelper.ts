@@ -22,42 +22,31 @@ const hasHandle = (avatarStatusResponse: AvatarStatusResponse, handle: string, p
 
 // returns all proofs in this IdsItem which are valid
 const getValidProofs = (foundIdsItem: IdsItem) => {
-  return [];
+  let proofs: Proof[] = foundIdsItem.proofs;
+  let validProofs = [];
+
+  for (let proof of proofs) {
+    if (proof.is_valid) {
+      validProofs.push(proof);
+    }
+  }
+
+  return validProofs;
 }
 
 const hasValidEthereumProof = (validProofs: Proof[], address: string) => {
-  return true;
+  let validEthereumProof = false;
+
+  for (let proof of validProofs) {
+
+    if (proof.platform === 'ethereum' && proof.identity === address.toLowerCase()) {
+      validEthereumProof = true;
+      break;
+    }
+  }
+
+  return validEthereumProof;
 }
-
-
-
-// Not needed with exact=true
-// const getIdsItem = (handle: string, platform: string, idItems: IdsItem[]): IdsItem | null => {
-//   let foundIdsItem: IdsItem | null = null;
-
-//   for (let idsItem of idItems) {
-//     let proofs: Proof[] = idsItem.proofs;
-//     let validProofs = [];
-
-//     for (let proof of proofs) {
-//       if (proof.is_valid) {
-//         validProofs.push(proof);
-
-//         if (proof.platform === platform && proof.identity === handle) {
-//           foundIdsItem = idsItem;
-//         }
-//       }
-//     }
-
-//     // only included valid proofs
-//     if (foundIdsItem) {
-//       foundIdsItem.proofs = validProofs;
-//       break;
-//     }
-//   }
-
-//   return foundIdsItem;
-// }
 
 const getPlatformsNeedToConnectTo =
   (idsItem: IdsItem | null, supportedPlatforms: string[]): Platform[] => {

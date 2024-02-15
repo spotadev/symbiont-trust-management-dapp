@@ -7,12 +7,27 @@
   background-color: black;
 }
 
+.dark-theme {
+  color: whitesmoke;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background-color: black;
+}
+
+.light-link {
+  color: purple;
+}
+
 .link {
   color: gold;
 }
 
 @media print {
-  .theme {
+
+  .light-theme,
+  .dark-theme {
     color: black;
     padding-left: 20px;
     padding-right: 20px;
@@ -21,7 +36,8 @@
     background-color: white;
   }
 
-  .link {
+  .light-link,
+  .dark-link {
     color: purple;
   }
 }

@@ -9,6 +9,9 @@ import { useEffect, useLayoutEffect } from "react";
 import NextIdManagement from "./app/components/pages/next-Id-management/NextIdManagement";
 import About from "./app/components/pages/about/about";
 import Home from "./app/components/pages/home/Home";
+import FindNextIdAvatar from "./app/components/pages/find-nextid-avatar/FindNextIdAvatar";
+import LinkXTwitter from "./app/components/pages/link-platform/x-twitter/LinkXTwitter";
+import LinkGithub from "./app/components/pages/link-platform/github/LinkGithub";
 
 declare global {
   namespace JSX {
@@ -50,7 +53,7 @@ const App = () => {
             display: 'flex', justifyContent: 'space-between', alignItems: 'center'
           }}>
             <div>
-              <span style={{ fontWeight: 'bold', color: 'white' }}>Next ID / UTU Management</span>
+              <span style={{ fontWeight: 'bold', color: 'white' }}>Next ID / Trust Management powered by Symbiont Trust</span>
             </div>
             <div>
               <w3m-button />
@@ -62,6 +65,9 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/next-id-management" element={<NextIdManagement />} />
+                <Route path="/link/platform/twitter" element={<LinkXTwitter />} />
+                <Route path="/link/platform/github" element={<LinkGithub />} />
+                <Route path="/find-next-id-avatar" element={<FindNextIdAvatar />} />
               </Routes>
             </BrowserRouter>
           </div>

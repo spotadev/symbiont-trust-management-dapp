@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import appStyle from '../../../../App.module.css';
 
 import {
   IdsItem,
@@ -17,12 +18,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 
 import {
-  homeUpdateGithubProofVerified,
-  homeUpdateIdsItem,
-  homeUpdatePlatformsNeedToConnectTo,
-  homeUpdateValidProofs,
-  homeUpdateXProofVerified
-} from "../../../store/slices/homeSlice";
+  nextIdManagement_updateGithubProofVerified,
+  nextIdManagement_updateIdsItem,
+  nextIdManagement_updatePlatformsNeedToConnectTo,
+  nextIdManagement_updateValidProofs,
+  nextIdManagement_updateWalletEthereumVerified,
+  nextIdManagement_updateXProofVerified
+} from "../../../store/slices/nextIdManagementSlice";
 import ShowNextId from "../../shared/ShowNextId";
 import GuiPlatform from "./children/GuiPlatform";
 
@@ -31,6 +33,7 @@ import ProofPayloadResponse, {
 } from "../../../services/next-id/nextIdProofService";
 
 import { nextIdVerifyService } from "../../../services/next-id/nextIdVerifyService";
+import LinkExplanation from "../../shared/LinkExplanation";
 
 
 export default function NextIdManagement() {
@@ -41,13 +44,25 @@ export default function NextIdManagement() {
 
   const { address, isConnected } = useAccount();
 
+  // refs below ------------------------------------------------------------------------------------
+  // Added to stop useEffect making network call twice
+  const prevAddressRef = useRef<`0x${string}` | undefined>();
+
   // readonly values from redux below --------------------------------------------------------------
-  const idsItem = useSelector((state: RootState) => state.home.idsItem);
-  const validProofs = useSelector((state: RootState) => state.home.validProofs);
-  const walletEthereumVerified = useSelector((state: RootState) => state.home.walletEthereumVerified);
-  const xProofVerified = useSelector((state: RootState) => state.home.xProofVerified);
-  const githubProofVerified = useSelector((state: RootState) => state.home.githubProofVerified);
-  const platformsNeedToConnectTo = useSelector((state: RootState) => state.home.platformsNeedToConnectTo);
+  const idsItem = useSelector((state: RootState) => state.nextIdManagement.idsItem);
+  const validProofs = useSelector((state: RootState) => state.nextIdManagement.validProofs);
+
+  const walletEthereumVerified =
+    useSelector((state: RootState) => state.nextIdManagement.walletEthereumVerified);
+
+  const xProofVerified =
+    useSelector((state: RootState) => state.nextIdManagement.xProofVerified);
+
+  const githubProofVerified =
+    useSelector((state: RootState) => state.nextIdManagement.githubProofVerified);
+
+  const platformsNeedToConnectTo =
+    useSelector((state: RootState) => state.nextIdManagement.platformsNeedToConnectTo);
 
   const getIdsItemWithSameEthereumAddressAsWallet = (idsItems: IdsItem[], address: string) => {
     const lowerCaseAddress = address.toLowerCase();
@@ -68,18 +83,21 @@ export default function NextIdManagement() {
     for (let proof of validProofs) {
       switch (proof.platform) {
         case 'twitter':
-          homeUpdateXProofVerified(true);
+          dispatch(nextIdManagement_updateXProofVerified(true));
           break;
         case 'github':
-          homeUpdateGithubProofVerified(true);
+          dispatch(nextIdManagement_updateGithubProofVerified(true));
+          break;
+        case 'ethereum':
+          dispatch(nextIdManagement_updateWalletEthereumVerified(true));
           break;
       }
     }
   }
 
   const reset = () => {
-    dispatch(homeUpdateIdsItem(null));
-    dispatch(homeUpdateValidProofs([]));
+    dispatch(nextIdManagement_updateIdsItem(null));
+    dispatch(nextIdManagement_updateValidProofs([]));
     savePlatformVerifiedStates([]);
   }
 
@@ -109,12 +127,16 @@ export default function NextIdManagement() {
 
     const validProofs = avatarStatusResponseHelper.getValidProofs(idsItem);
 
+    console.log('validProofs', validProofs);
+
     const _hasValidEthereumProof =
       avatarStatusResponseHelper.hasValidEthereumProof(validProofs, address);
 
+    console.log('_hasValidEthereumProof', _hasValidEthereumProof);
+
     if (_hasValidEthereumProof) {
-      dispatch(homeUpdateIdsItem(idsItem));
-      dispatch(homeUpdateValidProofs(validProofs));
+      dispatch(nextIdManagement_updateIdsItem(idsItem));
+      dispatch(nextIdManagement_updateValidProofs(validProofs));
       savePlatformVerifiedStates(validProofs);
     }
     else {
@@ -129,7 +151,7 @@ export default function NextIdManagement() {
         idsItem, supportedPlatforms);
 
     console.log('platformsNeedToConnectTo', platformsNeedToConnectTo);
-    dispatch(homeUpdatePlatformsNeedToConnectTo(platformsNeedToConnectTo));
+    dispatch(nextIdManagement_updatePlatformsNeedToConnectTo(platformsNeedToConnectTo));
   }
 
   const createAvatarWithEthereumAddress = async () => {
@@ -149,14 +171,28 @@ export default function NextIdManagement() {
     const verifiedProof =
       await nextIdVerifyService.verifyEthereumProof(proofPayloadResponse, publicKey, address);
 
-    dispatch(homeUpdateGithubProofVerified(verifiedProof));
+    console.log('verifiedProof', verifiedProof);
+
+    if (verifiedProof) {
+      getAvatarStatusResponse(address);
+    }
+
+    dispatch(nextIdManagement_updateWalletEthereumVerified(verifiedProof));
   }
+
+
 
   // useEffect methods below ----------------------------------------------------------------------=
   useEffect(() => {
-    if (address) {
-      getAvatarStatusResponse(address);
+    console.log('address', address);
+    if (prevAddressRef.current !== address) {
+      if (address) {
+        getAvatarStatusResponse(address);
+      } else {
+        reset();
+      }
     }
+    prevAddressRef.current = address;
   }, [address]);
 
   // JSX methods below -----------------------------------------------------------------------------
@@ -189,6 +225,11 @@ export default function NextIdManagement() {
             <GuiPlatform platform={platform} />
           </div>
         ))}
+        {
+          platformsNeedToConnectTo.length == 0 ?
+            <div style={{ paddingTop: '20px' }}>All available platforms already linked</div > :
+            ''
+        }
       </>
     );
   }
@@ -201,22 +242,32 @@ export default function NextIdManagement() {
       return getIsConnectedAndNotWalletEthereumVerifiedJSX();
     }
     else {
-      return '';
+      return (
+        <div>
+          Please Connect your wallet to proceed.
+        </div>
+      );
     }
   }
 
   return (
     <div>
       <div style={{ textAlign: 'right' }}>
-        <Link to={'/home'}>
-          <span style={{ color: 'gold' }}>
+        <Link to={'/'}>
+          <span className={appStyle.link}>
             Home
           </span>
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/find-next-id-avatar'}>
-          <span style={{ color: 'gold' }}>
+          <span className={appStyle.link}>
             UTU Trust
+          </span>
+        </Link>
+        &nbsp; &nbsp;&nbsp; &nbsp;
+        <Link to={'/symbiont-trust'}>
+          <span className={appStyle.link}>
+            Symbiont Trust
           </span>
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
@@ -226,10 +277,13 @@ export default function NextIdManagement() {
           </span>
         </Link>
       </div>
-      <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px', paddingBottom: '20px' }}>
+      <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
         Avatar Management
       </div>
+      <hr />
       {getAvatarJSX()}
-    </div>
+      <br />
+      <LinkExplanation />
+    </div >
   );
 }

@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
-import homeReducer from "./slices/homeSlice"
+import nextIdManagementReducer from "./slices/nextIdManagementSlice"
+import githubHandleReducer from "./slices/githubHandleSlice"
+import xHandleReducer from "./slices/xHandleSlice";
 
 export const store = configureStore({
   reducer: {
-    home: homeReducer
+    nextIdManagement: nextIdManagementReducer,
+    githubHandle: githubHandleReducer,
+    xHandle: xHandleReducer
   },
 });
 
