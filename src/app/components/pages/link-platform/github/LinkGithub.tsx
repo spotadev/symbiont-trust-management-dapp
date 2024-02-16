@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import CaptureGithubHandle from './children/CaptureGithubHandle';
-import GenerateJsonFileForGist from './children/ShowGistInfo';
+import ShowGistInfo from './children/ShowGistInfo';
 
 export default function LinkGithub() {
 
@@ -19,14 +19,9 @@ export default function LinkGithub() {
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
         Adding Github Handle to next.id DID
       </div>
+      <hr />
       <CaptureGithubHandle />
-      <br />
-      <hr />
-      <br />
-      <GenerateJsonFileForGist />
-      <br />
-      <br />
-      <hr />
+      <ShowGistInfo />
     </div>
   );
 }
