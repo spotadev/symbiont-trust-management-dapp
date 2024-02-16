@@ -196,10 +196,17 @@ export default function ShowGistInfo() {
           </span>
         </Link>
         &nbps;
-        page in 4 seconds where you will see your DID.
+        <div>
+          Click
+          <Link to={'/next-id-management'}>
+            <span className={appStyle.link}>
+              Avatar Management
+            </span>&nbps;
+          </Link>
+          to see the list of handles added to your DID including this one.
+        </div>
       </>
     );
   }
   else return '';
-
 }
