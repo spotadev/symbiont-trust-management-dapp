@@ -12,6 +12,7 @@ import Home from "./app/components/pages/home/Home";
 import FindNextIdAvatar from "./app/components/pages/find-nextid-avatar/FindNextIdAvatar";
 import LinkXTwitter from "./app/components/pages/link-platform/x-twitter/LinkXTwitter";
 import LinkGithub from "./app/components/pages/link-platform/github/LinkGithub";
+import DocsMain from "./app/components/pages/docs/DocsMain";
 
 declare global {
   namespace JSX {
@@ -52,8 +53,14 @@ const App = () => {
           <div style={{
             display: 'flex', justifyContent: 'space-between', alignItems: 'center'
           }}>
-            <div>
-              <span style={{ fontWeight: 'bold', color: 'white' }}>Next ID / Trust Management powered by Symbiont Trust</span>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <img src="src/sy.png" style={{ width: '20px', paddingRight: '10px' }} />
+              <span style={{ fontWeight: 'bold', color: 'white' }}>Trust Management powered by Symbiont Trust</span>
             </div>
             <div>
               <w3m-button />
@@ -64,6 +71,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/docs" element={<DocsMain />} />
                 <Route path="/next-id-management" element={<NextIdManagement />} />
                 <Route path="/link/platform/twitter" element={<LinkXTwitter />} />
                 <Route path="/link/platform/github" element={<LinkGithub />} />

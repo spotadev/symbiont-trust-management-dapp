@@ -4,9 +4,9 @@
 
 Sunday 18th Feb 2024: 
 
-Functionality is NOT yet operational.
+Functionality is NOT complete and is Work in Progress.
 
-Keeping checking this README for project status.
+Keeping checking back for an update in this README.
 
 ## What is this project about?
 
@@ -61,3 +61,25 @@ It will automaticaly open a browser.
 The console says which port it is running on if you want to open in another browser:
 
 e.g http://localhost:5173/
+
+
+## Technologies integrated with
+
+* [next.id](https://docs.next.id/)
+* [Utu Trust](https://utu.io)
+* [Web3Modal](https://web3modal.com/)
+* [web3 bio API](https://api.web3.bio/)
+* Crypto Wallets
+
+## Monestisation / Profit Sharing
+
+This project uses the JavaSpeak license which states that in the event of monetisation, monies
+shall be distributed in proportion to effort as measured by metrics such as git contributions.
+
+## Contact Us
+
+If you want to contact us or get involved please start by raising a discussion under the github discussions of this project:
+
+* [https://github.com/spotadev/symbiont-trust-management-dapp/discussions](https://github.com/spotadev/symbiont-trust-management-dapp/discussions)
+
+From there we can migrate to the communication channel of your choice.

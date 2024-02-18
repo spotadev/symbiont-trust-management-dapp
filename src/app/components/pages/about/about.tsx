@@ -48,13 +48,41 @@ export default function About() {
           Infact clicking on the avatar icon shows you a Trust Page showing Trust information on
           the avatar.
         </p>
+      </div>
+      <hr />
+      <div>
+        This software integrates with the following technologies:
+        <ul>
+          <li>
+            <a href="https://docs.next.id/" target="_new">next.id</a>
+          </li>
+          <li>
+            <a href="https://utu.io" target="_new">Utu Trust</a>
+          </li>
+          <li>
+            <a href="https://web3modal.com/" target="_new">Web3Modal</a>
+          </li>
+          <li>
+            <a href="https://api.web3.bio/">web3 bio API</a>
+          </li>
+          <li>
+            Crypto Wallets
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div>
         <div style={{ paddingTop: '10px' }}>
-          To get in touch create a discussion here:
+          If you want to contact us or get involved please start by raising a discussion under
+          the github discussions of this project:
           <div style={{ paddingTop: '20px', paddingLeft: '20px' }}>
             <a href="https://github.com/spotadev/symbiont-trust-management-dapp/discussions">
               https://github.com/spotadev/symbiont-trust-management-dapp/discussions
             </a>
           </div>
+          <p>
+            From there we can migrate to the communication channel of your choice.
+          </p>
         </div>
       </div>
       <br />
