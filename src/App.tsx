@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { useEffect, useLayoutEffect } from "react";
 import NextIdManagement from "./app/components/pages/next-Id-management/NextIdManagement";
-import About from "./app/components/pages/about/about";
+import About from "./app/components/pages/about/About";
 import Home from "./app/components/pages/home/Home";
 import FindNextIdAvatar from "./app/components/pages/find-nextid-avatar/FindNextIdAvatar";
 import LinkXTwitter from "./app/components/pages/link-platform/x-twitter/LinkXTwitter";

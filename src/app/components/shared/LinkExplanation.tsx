@@ -12,7 +12,7 @@ export default function LinkExplanation() {
           Go to
           <Link to={'/find-next-id-avatar'}>
             &nbsp;
-            <span className={appStyle.link}>UTU Trust</span>
+            UTU Trust
             &nbsp;
           </Link>
           to find an Avatar DID and give / get UTU Trust signal on it.
@@ -24,13 +24,12 @@ export default function LinkExplanation() {
           Go to
           <Link to={'/find-next-id-avatar'}>
             &nbsp;
-            <span className={appStyle.link}>Symbiont Trust</span>
+            Symbiont Trust
             &nbsp;
           </Link>
           to:
         </p>
         <div>
-
           <ul>
             <li>build your Symbiont Trust Profile</li>
             <li>to find an Avatar DID and give / get Symbiont Trust signal on it.</li>

@@ -254,27 +254,19 @@ export default function NextIdManagement() {
     <div>
       <div style={{ textAlign: 'right' }}>
         <Link to={'/'}>
-          <span className={appStyle.link}>
-            Home
-          </span>
+          Home
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/find-next-id-avatar'}>
-          <span className={appStyle.link}>
-            UTU Trust
-          </span>
+          UTU Trust
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/symbiont-trust'}>
-          <span className={appStyle.link}>
-            Symbiont Trust
-          </span>
+          Symbiont Trust
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/about'}>
-          <span style={{ color: 'gold' }}>
-            About
-          </span>
+          About
         </Link>
       </div>
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>

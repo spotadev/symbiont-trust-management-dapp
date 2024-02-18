@@ -140,15 +140,25 @@ export default function PostTweetInstructions() {
 
   const getSendTweetJSX = () => {
     return (
-      <>
-        <div>
+      <div>
+        <hr />
+        <div style={{ paddingTop: '10px' }}>
           <span style={{ fontWeight: 'bold' }}>Step 2: </span>
           Send Tweet and Paste URL - IN PROGRESS
         </div>
         <div style={{ paddingTop: '20px' }}>
-          Please copy the text in the pink box below into a tweet and send it:
+          Please copy the text in the box below into a tweet and send it:
         </div>
-        <div style={{ marginTop: '20px', padding: '10px', backgroundColor: 'lightgreen', height: '120px', wordWrap: 'break-word' }}>
+        <div style={{
+          marginTop: '20px',
+          borderColor: 'white',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          padding: '10px',
+          backgroundColor: 'black',
+          height: '120px',
+          wordWrap: 'break-word'
+        }}>
           {firstLineTweet}
           <br />
           Sig: {signedMessageBase64Tweet}
@@ -170,7 +180,7 @@ export default function PostTweetInstructions() {
             onClick={verify}>Verify</button>
         </div>
         {errorMessage ? (<div style={{ color: 'red' }}>${errorMessage}</div>) : null}
-      </>
+      </div>
     );
   }
 
@@ -179,18 +189,24 @@ export default function PostTweetInstructions() {
   }
   else if (xProofVerified) {
     return (
-      <>
-        <span style={{ fontWeight: 'bold' }}>Step 2: </span>
-        Send Tweet and Paste URL - Handle added successfully to next.id DID
-      </>
+      <div>
+        <hr />
+        <div style={{ paddingTop: '10px' }}>
+          <span style={{ fontWeight: 'bold' }}>Step 2: </span>
+          Send Tweet and Paste URL - Handle added successfully to next.id DID
+        </div>
+      </div>
     );
   }
   else {
     return (
-      <>
-        <span style={{ fontWeight: 'bold' }}>Step 2: </span>
-        Send Tweet and Paste URL - PENDING
-      </>
+      <div>
+        <hr />
+        <div style={{ paddingTop: '10px' }}>
+          <span style={{ fontWeight: 'bold' }}>Step 2: </span>
+          Send Tweet and Paste URL - PENDING
+        </div>
+      </div>
     );
   }
 }

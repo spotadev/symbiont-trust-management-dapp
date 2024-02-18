@@ -2,9 +2,7 @@
 
 ## Current Status
 
-16th Feb 2024: this project is a rewrite of:
-
-* utu-endorse-nextid-old
+Sunday 18th Feb 2024: 
 
 Functionality is NOT yet operational.
 

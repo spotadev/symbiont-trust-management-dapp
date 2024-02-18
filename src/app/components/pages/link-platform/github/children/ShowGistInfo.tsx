@@ -116,26 +116,44 @@ export default function ShowGistInfo() {
     return (
       <div>
         <hr />
-        <span style={{ fontWeight: 'bold' }}>Step 2: </span>
-        Create a gist repository and add file - PENDING
+        <div style={{ paddingTop: '20px' }}>
+          <span style={{ fontWeight: 'bold' }}>Step 2: </span>
+          Create a gist repository and add file - PENDING
+        </div>
         <div style={{ paddingTop: '20px' }}>
           Github has a cut down version of Github repositories called Gist Repositories.
-        </div>
+        </div >
         <div style={{ paddingTop: '20px' }}>
           See here for further information about Gist Repositories:
           <br /><br />
-          <a href="https://www.youtube.com/watch?v=xl004KsPKGE" target="_new">Youtube: What is GitHub Gist? Let's learn!</a>
-          <br /><br />
-          <a href="https://gist.github.com/" target="_new">https://gist.github.com/</a>
+          <div style={{ paddingLeft: '20px' }}>
+            <a href="https://www.youtube.com/watch?v=xl004KsPKGE" target="_new">
+              Youtube: What is GitHub Gist? Let's learn!
+            </a>
+          </div>
+          <div style={{ paddingLeft: '20px', paddingTop: '20px' }}>
+            <a href="https://gist.github.com/" target="_new">
+              https://gist.github.com/
+            </a>
+          </div>
         </div>
-        <div>
-          <p style={{ fontWeight: 'bold', paddingTop: '20px' }}>
-            <h3>Copy / Paste Details:</h3>
+        <div style={{ paddingTop: '10px' }}>
+          <p>
+            You are now going to create a gist. The details for the gist you need to create
+            are shown below.
           </p>
           <div>
             Gist Filename:
           </div>
-          <div style={{ marginTop: '20px', backgroundColor: 'lightgreen', wordWrap: 'break-word', padding: '10px' }}>
+          <div style={{
+            marginTop: '20px',
+            borderColor: 'white',
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            backgroundColor: 'black',
+            wordWrap: 'break-word',
+            padding: '10px'
+          }}>
             <pre>
               {gistFileName}
             </pre>
@@ -143,14 +161,24 @@ export default function ShowGistInfo() {
           <div style={{ paddingTop: '20px' }}>
             Gist File Content:
           </div>
-          <div style={{ marginTop: '20px', backgroundColor: 'lightgreen', wordWrap: 'break-word', padding: '10px' }}>
+          <div style={{
+            marginTop: '20px',
+            borderColor: 'white',
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            backgroundColor: 'black',
+            wordWrap: 'break-word',
+            padding: '10px'
+          }}>
             <pre style={{ tabSize: '2', wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}>
               {gistFileContent}
             </pre>
           </div>
         </div>
-        <div>
-          Login to github.  Then got to gist.github.com and click the + to add a new gist.
+        <div style={{ paddingTop: '20px' }}>
+          <span style={{ color: 'lime' }}>Instructions:</span>&nbsp;
+          Login to github.  Then go to gist.github.com and click the + on the top right hand corner
+          of the webpage to add a new gist.
           <br /><br />
           In the "gist description box" type something like: "next.id validaion"
           <br /><br />
@@ -160,22 +188,20 @@ export default function ShowGistInfo() {
           <br /><br />
           Select the "Create Public Gist" option when creating the gist.
           <br /><br />
-          Once you have created the gist you will see a hash in the url of the gist.
-          Copy that hash into "Gist hash" box below and press the Verify button.  You will be
-          told if the github handle was successfully added to the DID or not.
+          Once you have created the gist copy the url of the gist into the box below and press verify:
         </div>
         <div style={{ paddingTop: '20px' }}>
           <input
-            style={{ width: '250px' }}
+            style={{ width: '450px' }}
             className={appStyle.input}
             placeholder="Gist Hash"
             value={gistUrl}
             onChange={(event) => setGistUrl(event.target.value)} />
           &nbsp;&nbsp;
-          <button className={appStyle.button} disabled={githubHandle?.length == 0}
+          <button className={appStyle.button} disabled={gistUrl?.length == 0}
             onClick={verify}>Verify</button>
         </div>
-      </div>
+      </div >
 
     );
   }
@@ -185,9 +211,12 @@ export default function ShowGistInfo() {
   }
   else if (githubProofVerified) {
     return (
-      <>
-        <span style={{ fontWeight: 'bold' }}>Step 2: </span>
-        Create a gist repository and add file - Handle added successfully to next.id DID
+      <div>
+        <hr />
+        <div style={{ paddingTop: '20px' }}>
+          <span style={{ fontWeight: 'bold', paddingTop: '10px' }}>Step 2: </span>
+          Create a gist repository and add file - Handle added successfully to next.id DID
+        </div>
         <br /><br />
         .... Redirecting to &nbps;
         <Link to={'/next-id-management'}>
@@ -205,7 +234,7 @@ export default function ShowGistInfo() {
           </Link>
           to see the list of handles added to your DID including this one.
         </div>
-      </>
+      </div>
     );
   }
   else return '';

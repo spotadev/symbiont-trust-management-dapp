@@ -19,13 +19,9 @@ export default function LinkXTwitter() {
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
         Adding Twitter Handle to next.id DID
       </div>
-      <CaptureXHandle />
-      <br />
       <hr />
-      <br />
+      <CaptureXHandle />
       <PostTweetInstructions />
-      <br />
-      <br />
       <hr />
     </div>
   );

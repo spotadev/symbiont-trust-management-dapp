@@ -8,12 +8,8 @@ export default function LinkGithub() {
   return (
     <div>
       <div style={{ textAlign: 'right' }}>
-        <Link to={'/'}>
+        <Link to={'/next-id-management'}>
           Back
-        </Link>
-        &nbsp;&nbsp;
-        <Link to={'/about'}>
-          About
         </Link>
       </div>
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>

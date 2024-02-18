@@ -114,19 +114,22 @@ button:active {
 }
 
 a {
-  color: green;
+  color: gold;
   text-decoration: none;
+  font-weight: normal;
   /* Optional: Remove underline if you want */
 }
 
 /* Define a style for visited links */
 a:visited {
-  color: darkgreen;
+  color: gold;
+  font-weight: normal;
 }
 
 /* Define a style for hovered links */
 a:hover {
-  color: limegreen;
+  color: gold;
+  font-weight: bold;
 }
 
 .input,

@@ -8,27 +8,19 @@ export default function Home() {
     <div>
       <div style={{ textAlign: 'right' }}>
         <Link to={'/next-id-management'}>
-          <span className={appStyle.link}>
-            Avatar Management
-          </span>
+          Avatar Management
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/find-next-id-avatar'}>
-          <span className={appStyle.link}>
-            UTU Trust
-          </span>
+          UTU Trust
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/symbiont-trust'}>
-          <span className={appStyle.link}>
-            Symbiont Trust
-          </span>
+          Symbiont Trust
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/about'}>
-          <span className={appStyle.link}>
-            About
-          </span>
+          About
         </Link>
       </div>
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>

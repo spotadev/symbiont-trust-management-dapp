@@ -7,37 +7,29 @@ export default function About() {
     <div>
       <div style={{ textAlign: 'right' }}>
         <Link to={'/'}>
-          <span className={appStyle.link}>
-            Home
-          </span>
+          Home
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/next-id-management'}>
-          <span className={appStyle.link}>
-            Avatar Management
-          </span>
+          Avatar Management
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/find-next-id-avatar'}>
-          <span className={appStyle.link}>
-            UTU Trust
-          </span>
+          UTU Trust
         </Link>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <Link to={'/symbiont-trust'}>
-          <span className={appStyle.link}>
-            Symbiont Trust
-          </span>
+          Symbiont Trust
         </Link>
       </div>
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
         About
       </div>
       <hr />
-      <div>
+      <div style={{ paddingTop: '10px' }}>
         This site was created by crypto enthusiasts who want to bring Trust to the web2 and web3
         space.
-        <p>
+        <div style={{ paddingTop: '20px' }}>
           While this software is about management of the Next DID avatar and it's Trust metrics,
           other softwares like social media websites consume the avatar:
           <ul>
@@ -45,7 +37,7 @@ export default function About() {
             <li>Symbiont - Chrome Extension</li>
             <li>Trustify - Work platform optimised for crypto gigs</li>
           </ul>
-        </p>
+        </div>
         <p>
           The idea with these other softwares is that they will show an icon next to users that
           have the Next DID avatar.  The avatar acts in the same way a twitter tick works
@@ -56,7 +48,16 @@ export default function About() {
           Infact clicking on the avatar icon shows you a Trust Page showing Trust information on
           the avatar.
         </p>
+        <div style={{ paddingTop: '10px' }}>
+          To get in touch create a discussion here:
+          <div style={{ paddingTop: '20px', paddingLeft: '20px' }}>
+            <a href="https://github.com/spotadev/symbiont-trust-management-dapp/discussions">
+              https://github.com/spotadev/symbiont-trust-management-dapp/discussions
+            </a>
+          </div>
+        </div>
       </div>
+      <br />
       <hr />
     </div>
   );

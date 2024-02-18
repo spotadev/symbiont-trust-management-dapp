@@ -38,7 +38,7 @@ export default function CaptureXHandle() {
 
   if (!xProofPayloadResponse) {
     return (
-      <div>
+      <div style={{ paddingTop: '10px' }}>
         <span style={{ fontWeight: 'bold' }}>Step 1:</span> Enter your X Handle - PENDING
         &nbsp;&nbsp;
         <input
@@ -52,7 +52,7 @@ export default function CaptureXHandle() {
   }
   else {
     return (
-      <div>
+      <div style={{ paddingTop: '10px' }}>
         <span style={{ fontWeight: 'bold' }}>Step 1:</span> Enter your X Handle - DONE
       </div>
     );
