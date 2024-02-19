@@ -29,12 +29,12 @@ export default function SymbiontTrust() {
         With Symbiont Trust you can do the following
         <ul>
           <li>
-            <Link to={'/configure-symbiont-trust-profile'}>
+            <Link to={'/symbiont-trust/configure-symbiont-trust-profile'}>
               Configure Symbiont Trust Profile
             </Link>
           </li>
           <li>
-            <Link to={'/preview-symbiont-trust-profile'}>
+            <Link to={'/symbiont-trust/preview-symbiont-trust-profile'}>
               Preview Symbiont Trust Profile
             </Link>
           </li>
@@ -54,8 +54,8 @@ export default function SymbiontTrust() {
           see your Symbiont Trust profile page.
         </p>
       </div>
-
-
+      <hr />
+      <br /><br />
     </div >
   )
 }

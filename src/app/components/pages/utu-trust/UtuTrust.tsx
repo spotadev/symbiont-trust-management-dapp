@@ -29,18 +29,12 @@ export default function UtuTrust() {
       </div>
       <hr />
       <div style={{ paddingTop: '20px' }}>
-        With UTU Trust you can do the following:
-        <ul>
-          <li>
-            <Link to={'/find-did-for-utu-signal'}>
-              Search for DIDs
-            </Link>
-          </li>
-        </ul>
-        <p>
-          You can click on the above link to look for a DID.  Once you have found one you can
-          view or give signal on that DID.
-        </p>
+        With UTU Trust you can search for a DID and then see or give signal on the DID:
+        <div style={{ paddingTop: '20px', paddingLeft: '20px' }}>
+          <Link to={'/find-did-for-utu-signal'}>
+            Search for DIDs
+          </Link>
+        </div>
         <p>
           Note that the idea with UTU Trust is that you trust people in your networks more than
           random people.  UTU Trust gives you signal from people in your immediate network as a
@@ -51,10 +45,11 @@ export default function UtuTrust() {
           So in order for UTU signal to work the idea is you connect your social media networks to
           UTU at the following URL:
         </p>
-        <p>
+        <div style={{ paddingLeft: '20px' }}>
           <a href="https://app.utu.io/connect" target="_new">https://app.utu.io/connect</a>
-        </p>
+        </div>
       </div>
+      <br />
       <hr />
       <div>
         <p>
@@ -63,16 +58,16 @@ export default function UtuTrust() {
         </p>
         <div>
           To see how your current Symbiont Trust Profile is configured go to:
-          <ul>
-            <li>
-              <Link to={'/symbiont-trust'}>
-                Symbiont Trust
-              </Link>
-            </li>
-          </ul>
+          <div style={{ paddingTop: '20px', paddingLeft: '20px' }}>
+            <Link to={'/symbiont-trust'}>
+              Symbiont Trust
+            </Link>
+          </div>
         </div>
       </div>
+      <br />
       <hr />
+      <br /><br />&nbsp;
     </div>
   );
 }
