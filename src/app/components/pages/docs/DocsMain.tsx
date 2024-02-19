@@ -39,10 +39,10 @@ export default function DocsMain() {
           Metrics are associated with their DID.
         </p>
         <p>
-          The next.id DID provide functionality to associate social media handles with your
+          The next.id DID provides functionality to associate social media handles with your
           DID.  It is done in such a way that there is cryptographic proof that the DID owner
           is the owner of the social media handles and is not just pretending they own them.
-          This provides a form of personhood identity.
+          This provides a form of vetted personhood identity.
         </p>
       </div>
       <br />
@@ -52,12 +52,12 @@ export default function DocsMain() {
           Other sites consume the DID
         </div>
         <p>
-          Other sites consume these avatar DIDs"
+          Other sites consume these avatar DIDs:
         </p>
         <ul>
+          <li>Trustify - Work platform optimised for crypto gigs</li>
           <li>Symbiont - social media website</li>
           <li>Symbiont - Chrome Extension</li>
-          <li>Trustify - Work platform optimised for crypto gigs</li>
         </ul>
         <p>
           On these sites any user that has an enhanced next.id avatar has an avatar icon next
@@ -95,9 +95,10 @@ export default function DocsMain() {
             Symbiont Trust database.
           </p>
           <p>
-            These important preferences are signed by the owner of the DID Avatar and also stored
-            in the Symbiont Trust database.  This provides auditing that the preferences are
-            indeed the DID owner's preferences.
+            These important preferences are signed by the owner of the DID Avatar and the
+            signatures also stored in the Symbiont Trust database along with the preferences.
+            This provides the necessary audit trail that the preferences are indeed the
+            DID owner's preferences.
           </p>
         </div>
         <br />
@@ -142,7 +143,22 @@ export default function DocsMain() {
           </ul>
         </div>
         <hr />
-
+        <div style={{ paddingLeft: '20px' }}>
+          <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
+            Asking more questions
+          </div>
+          <div style={{ paddingTop: '20px' }}>
+            You can raise a discussion thread here:
+            <div style={{ paddingTop: '20px', paddingLeft: '20px' }}>
+              <a href="https://github.com/spotadev/symbiont-trust-management-dapp/discussions">
+                https://github.com/spotadev/symbiont-trust-management-dapp/discussions
+              </a>
+            </div>
+          </div>
+        </div>
+        <br />
+        <hr />
+        <br />&nbsp;
       </div>
     </div>
   );
