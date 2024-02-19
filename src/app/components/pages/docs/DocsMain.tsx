@@ -52,8 +52,13 @@ export default function DocsMain() {
           Other sites consume the DID
         </div>
         <p>
-          Other sites are integrated with these avatar DIDs.
+          Other sites consume these avatar DIDs"
         </p>
+        <ul>
+          <li>Symbiont - social media website</li>
+          <li>Symbiont - Chrome Extension</li>
+          <li>Trustify - Work platform optimised for crypto gigs</li>
+        </ul>
         <p>
           On these sites any user that has an enhanced next.id avatar has an avatar icon next
           to their username.
@@ -114,6 +119,30 @@ export default function DocsMain() {
         </div>
         <br />
         <hr />
+        <div>
+          <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
+            Technologies Symbiont Trust integrated with
+          </div>
+          <ul>
+            <li>
+              <a href="https://docs.next.id/" target="_new">next.id</a>
+            </li>
+            <li>
+              <a href="https://utu.io" target="_new">Utu Trust</a>
+            </li>
+            <li>
+              <a href="https://web3modal.com/" target="_new">Web3Modal</a>
+            </li>
+            <li>
+              <a href="https://api.web3.bio/">web3 bio API</a>
+            </li>
+            <li>
+              Crypto Wallets
+            </li>
+          </ul>
+        </div>
+        <hr />
+
       </div>
     </div>
   );
