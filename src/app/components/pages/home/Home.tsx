@@ -13,7 +13,7 @@ export default function Home() {
         <Link to={'/symbiont-trust'} style={{ paddingLeft: '15px' }}>
           Symbiont Trust
         </Link>
-        <Link to={'/find-next-id-avatar'} style={{ paddingLeft: '15px' }}>
+        <Link to={'/utu-trust'} style={{ paddingLeft: '15px' }}>
           UTU Trust
         </Link>
         <Link to={'/docs'} style={{ paddingLeft: '15px' }}>

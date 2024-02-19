@@ -5,21 +5,21 @@ export default function About() {
 
   return (
     <div>
-      <div style={{ textAlign: 'right' }}>
-        <Link to={'/'}>
+      <div style={{ textAlign: 'right' }} >
+        <Link to={'/'} style={{ paddingLeft: '15px' }}>
           Home
         </Link>
-        &nbsp; &nbsp;&nbsp; &nbsp;
-        <Link to={'/next-id-management'}>
+        <Link to={'/next-id-management'} style={{ paddingLeft: '15px' }}>
           Avatar Management
         </Link>
-        &nbsp; &nbsp;&nbsp; &nbsp;
-        <Link to={'/find-next-id-avatar'}>
+        <Link to={'/symbiont-trust'} style={{ paddingLeft: '15px' }}>
+          Symbiont Trust
+        </Link>
+        <Link to={'/utu-trust'} style={{ paddingLeft: '15px' }}>
           UTU Trust
         </Link>
-        &nbsp; &nbsp;&nbsp; &nbsp;
-        <Link to={'/symbiont-trust'}>
-          Symbiont Trust
+        <Link to={'/docs'} style={{ paddingLeft: '15px' }}>
+          Docs
         </Link>
       </div>
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>

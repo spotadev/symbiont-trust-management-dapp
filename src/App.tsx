@@ -9,10 +9,13 @@ import { useEffect, useLayoutEffect } from "react";
 import NextIdManagement from "./app/components/pages/next-Id-management/NextIdManagement";
 import About from "./app/components/pages/about/About";
 import Home from "./app/components/pages/home/Home";
-import FindNextIdAvatar from "./app/components/pages/find-nextid-avatar/FindNextIdAvatar";
 import LinkXTwitter from "./app/components/pages/link-platform/x-twitter/LinkXTwitter";
 import LinkGithub from "./app/components/pages/link-platform/github/LinkGithub";
 import DocsMain from "./app/components/pages/docs/DocsMain";
+
+import SymbiontTrust from "./app/components/pages/symbiont-trust/SymbiontTrust";
+import UtuTrust from "./app/components/pages/utu-trust/UtuTrust";
+import ConfigureSymbiontTrustProfile from "./app/components/pages/symbiont-trust/configure/ConfigureSymbiontTrustProfile";
 
 declare global {
   namespace JSX {
@@ -75,7 +78,9 @@ const App = () => {
                 <Route path="/next-id-management" element={<NextIdManagement />} />
                 <Route path="/link/platform/twitter" element={<LinkXTwitter />} />
                 <Route path="/link/platform/github" element={<LinkGithub />} />
-                <Route path="/find-next-id-avatar" element={<FindNextIdAvatar />} />
+                <Route path="/symbiont-trust" element={<SymbiontTrust />} />
+                <Route path="/symbiont-trust/configure-symbiont-trust-profile" element={<ConfigureSymbiontTrustProfile />} />
+                <Route path="/utu-trust" element={<UtuTrust />} />
               </Routes>
             </BrowserRouter>
           </div>

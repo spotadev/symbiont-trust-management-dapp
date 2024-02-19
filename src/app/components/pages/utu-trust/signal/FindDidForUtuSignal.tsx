@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
-import { nextIdCheckAvatarService } from "../../../services/next-id/nextIdCheckAvatarService";
+import { nextIdCheckAvatarService } from "../../../../services/next-id/nextIdCheckAvatarService";
 
-export default function FindNextIdAvatar() {
+export default function FindDidForUtuSignal() {
   const { address, isConnected } = useAccount();
 
   const search = async () => {
@@ -93,26 +93,24 @@ export default function FindNextIdAvatar() {
   return (
     <div>
       <div style={{ textAlign: 'right' }}>
-        <Link to={'/home'}>
-          <span style={{ color: 'gold' }}>
-            Home
-          </span>
+        <Link to={'/'} style={{ paddingLeft: '15px' }}>
+          Home
         </Link>
-        &nbsp; &nbsp;&nbsp; &nbsp;
-        <Link to={'/next-id-management'}>
-          <span style={{ color: 'gold' }}>
-            Avatar Management
-          </span>
+        <Link to={'/next-id-management'} style={{ paddingLeft: '15px' }}>
+          Avatar Management
         </Link>
-        &nbsp; &nbsp;&nbsp; &nbsp;
+        <Link to={'/symbiont-trust'} style={{ paddingLeft: '15px' }}>
+          Symbiont Trust
+        </Link>
+        <Link to={'/docs'}>
+          Docs
+        </Link>
         <Link to={'/about'}>
-          <span style={{ color: 'gold' }}>
-            About
-          </span>
+          About
         </Link>
       </div>
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px', paddingBottom: '20px' }}>
-        Find Next DID Avatar
+        UTU Trust
       </div>
       {getJSX()}
     </div>

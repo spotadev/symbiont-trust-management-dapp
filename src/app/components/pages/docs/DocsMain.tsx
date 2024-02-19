@@ -12,11 +12,11 @@ export default function DocsMain() {
         <Link to={'/next-id-management'} style={{ paddingLeft: '15px' }}>
           Avatar Management
         </Link>
-        <Link to={'/find-next-id-avatar'} style={{ paddingLeft: '15px' }}>
-          UTU Trust
-        </Link>
         <Link to={'/symbiont-trust'} style={{ paddingLeft: '15px' }}>
           Symbiont Trust
+        </Link>
+        <Link to={'/utu-trust'} style={{ paddingLeft: '15px' }}>
+          UTU Trust
         </Link>
         <Link to={'/about'} style={{ paddingLeft: '15px' }}>
           About
@@ -27,11 +27,9 @@ export default function DocsMain() {
       </div>
       <hr />
       <div>
-        <p>
-          <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
-            About the next.id DID used by Symbiont Trust
-          </div>
-        </p>
+        <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
+          About the next.id DID used by Symbiont Trust
+        </div>
         <p>
           Symbiont Trust uses a DID provided by next.id. We call this DID an avatar.
           The DID is associated with a user's wallet address.  A Trust profile is also
