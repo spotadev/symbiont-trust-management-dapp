@@ -19,6 +19,8 @@ import ConfigureSymbiontTrustProfile from "./app/components/pages/symbiont-trust
 import FindDidForUtuSignal from "./app/components/pages/utu-trust/signal/FindDidForUtuSignal";
 import UtuGiveSignal from "./app/components/pages/utu-trust/signal/UtuGiveSignal";
 import UtuGetSignal from "./app/components/pages/utu-trust/signal/UtuGetSignal";
+import PreviewSymbiontTrustProfile from "./app/components/pages/symbiont-trust/preview/PreviwSymbiontTrustProfile";
+import SymbiontTrustSignal from "./app/components/pages/symbiont-trust/signal/FindDidForSymbiontTrust";
 
 declare global {
   namespace JSX {
@@ -83,6 +85,8 @@ const App = () => {
                 <Route path="/link/platform/github" element={<LinkGithub />} />
                 <Route path="/symbiont-trust" element={<SymbiontTrust />} />
                 <Route path="/symbiont-trust/configure-symbiont-trust-profile" element={<ConfigureSymbiontTrustProfile />} />
+                <Route path="/symbiont-trust/preview-symbiont-trust-profile" element={<PreviewSymbiontTrustProfile />} />
+                <Route path="/symbiont-trust/signal" element={<SymbiontTrustSignal />} />
                 <Route path="/utu-trust" element={<UtuTrust />} />
                 <Route path="/utu-trust/find-did-for-utu-signal" element={<FindDidForUtuSignal />} />
                 <Route path="/utu-trust/give-signal" element={<UtuGiveSignal />} />

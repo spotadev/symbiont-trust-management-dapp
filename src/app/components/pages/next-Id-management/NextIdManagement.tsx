@@ -33,7 +33,7 @@ import ProofPayloadResponse, {
 } from "../../../services/next-id/nextIdProofService";
 
 import { nextIdVerifyService } from "../../../services/next-id/nextIdVerifyService";
-import LinkExplanation from "../../shared/LinkExplanation";
+import LinkExplanation from "../home/children/LinkExplanation";
 
 
 export default function NextIdManagement() {
@@ -274,8 +274,6 @@ export default function NextIdManagement() {
       </div>
       <hr />
       {getAvatarJSX()}
-      <br />
-      <LinkExplanation />
     </div >
   );
 }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import appStyle from '../../../../App.module.css';
-import LinkExplanation from "../../shared/LinkExplanation";
+import LinkExplanation from "./children/LinkExplanation";
 
 export default function Home() {
 

@@ -22,7 +22,7 @@ export default function LinkExplanation() {
       <div>
         <p>
           Go to
-          <Link to={'/find-next-id-avatar'}>
+          <Link to={'/symbiont-trust'}>
             &nbsp;
             Symbiont Trust
             &nbsp;
@@ -45,7 +45,7 @@ export default function LinkExplanation() {
       <div>
         <p>
           Go to
-          <Link to={'/find-next-id-avatar'}>
+          <Link to={'/utu-trust'}>
             &nbsp;
             UTU Trust
             &nbsp;

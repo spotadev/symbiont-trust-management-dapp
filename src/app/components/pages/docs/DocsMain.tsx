@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LinkExplanation from "../../shared/LinkExplanation";
+import LinkExplanation from "../home/children/LinkExplanation";
 
 export default function DocsMain() {
 

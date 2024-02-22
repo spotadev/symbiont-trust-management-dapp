@@ -30,18 +30,29 @@ export default function SymbiontTrust() {
         <ul>
           <li>
             <Link to={'/symbiont-trust/configure-symbiont-trust-profile'}>
-              Configure Symbiont Trust Profile
+              Configure a Symbiont Trust Profile
             </Link>
           </li>
           <li>
             <Link to={'/symbiont-trust/preview-symbiont-trust-profile'}>
-              Preview Symbiont Trust Profile
+              Preview your Symbiont Trust Profile
             </Link>
           </li>
           <li>
-            <Link to={'/give-symbiont-trust-signal'}>
-              Search for another DID and give Symbiont Trust Signal / Endorsements on that
+            <Link to={'/symbiont-trust/signal'}>
+              Search for another DID by interests you configured in your profile above
             </Link>
+            <ul>
+              <li>Make a Friend Request</li>
+              <li>Receive acceptance of your Friend Request</li>
+              <li>a
+                Take note of which social media platforms they are on and connect to them on those
+                platorms
+              </li>
+              <li>
+                Once you know them, endorse them as being knowledgable in your area of interest.
+              </li>
+            </ul>
           </li>
         </ul>
         <p>
