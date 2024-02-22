@@ -22,6 +22,7 @@ export default function UtuGetSignal() {
           Back
         </Link>
       </div>
+      <br /><br />
       <x-utu-feedback-details
         target-uuid={idHelper.getId(selectedIdsItem?.avatar)}
         source-uuid={address?.toLowerCase()}

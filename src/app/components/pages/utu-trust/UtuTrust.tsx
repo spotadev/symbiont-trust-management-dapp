@@ -11,6 +11,7 @@ declare global {
       "x-utu-root": any;
       "x-utu-recommendation": any;
       "x-utu-feedback-details": any;
+      "x-utu-feedback-details-popup": any;
       "x-utu-feedback-form": any;
     }
   }

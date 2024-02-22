@@ -3,6 +3,7 @@ import { useAccount } from "wagmi";
 import { RootState } from "../../../../store/store";
 import { Link } from "react-router-dom";
 import { idHelper } from "../../../../helpers/id-helper/IdHelper";
+import { v4 as uuidv4 } from 'uuid';
 
 import { ethers } from "ethers";
 
@@ -17,7 +18,7 @@ export default function UtuGiveSignal() {
     return ('');
   }
 
-  const transactionId = 'blah';
+  const transactionId = uuidv4();
 
   return (
     <div>
@@ -26,6 +27,7 @@ export default function UtuGiveSignal() {
           Back
         </Link>
       </div>
+      <br /><br />
       <x-utu-feedback-form
         target-uuid={idHelper.getId(selectedIdsItem?.avatar)}
         source-uuid={address?.toLowerCase()}

@@ -149,10 +149,10 @@ export default function FindDidForUtuSignal() {
         <Link to={'/symbiont-trust'} style={{ paddingLeft: '15px' }}>
           Symbiont Trust
         </Link>
-        <Link to={'/docs'}>
+        <Link to={'/docs'} style={{ paddingLeft: '15px' }}>
           Docs
         </Link>
-        <Link to={'/about'}>
+        <Link to={'/about'} style={{ paddingLeft: '15px' }}>
           About
         </Link>
       </div>
