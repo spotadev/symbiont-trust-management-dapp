@@ -16,6 +16,9 @@ import DocsMain from "./app/components/pages/docs/DocsMain";
 import SymbiontTrust from "./app/components/pages/symbiont-trust/SymbiontTrust";
 import UtuTrust from "./app/components/pages/utu-trust/UtuTrust";
 import ConfigureSymbiontTrustProfile from "./app/components/pages/symbiont-trust/configure/ConfigureSymbiontTrustProfile";
+import FindDidForUtuSignal from "./app/components/pages/utu-trust/signal/FindDidForUtuSignal";
+import UtuGiveSignal from "./app/components/pages/utu-trust/signal/UtuGiveSignal";
+import UtuGetSignal from "./app/components/pages/utu-trust/signal/UtuGetSignal";
 
 declare global {
   namespace JSX {
@@ -81,6 +84,9 @@ const App = () => {
                 <Route path="/symbiont-trust" element={<SymbiontTrust />} />
                 <Route path="/symbiont-trust/configure-symbiont-trust-profile" element={<ConfigureSymbiontTrustProfile />} />
                 <Route path="/utu-trust" element={<UtuTrust />} />
+                <Route path="/utu-trust/find-did-for-utu-signal" element={<FindDidForUtuSignal />} />
+                <Route path="/utu-trust/give-signal" element={<UtuGiveSignal />} />
+                <Route path="/utu-trust/get-signal" element={<UtuGetSignal />} />
               </Routes>
             </BrowserRouter>
           </div>

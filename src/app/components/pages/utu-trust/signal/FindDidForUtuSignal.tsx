@@ -1,11 +1,35 @@
 import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { nextIdCheckAvatarService } from "../../../../services/next-id/nextIdCheckAvatarService";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../store/store";
+import { utu_updateFindHandle, utu_updateFindIdsItems, utu_updateFindPlatform } from "../../../../store/slices/utuSlice";
+import appStyle from '../../../../../App.module.css';
+import SelectNextIdDID from "./children/SelectNextIdDID";
+
 
 export default function FindDidForUtuSignal() {
+
+  // hooks below -----------------------------------------------------------------------------------
   const { address, isConnected } = useAccount();
 
+  // this dispatch method is used for updating values in the slices of the redux store 
+  const dispatch = useDispatch();
+
+  // readonly values from redux below --------------------------------------------------------------
+  const findIdsItems = useSelector((state: RootState) => state.utu.findIdsItems);
+  const findHandle = useSelector((state: RootState) => state.utu.findHandle);
+  const findPlatform = useSelector((state: RootState) => state.utu.findPlatform);
+
   const search = async () => {
+    console.log('findHandle', findHandle);
+    console.log('findPlatform', findPlatform);
+
+    if (!findHandle || !findPlatform) {
+      throw Error(
+        'Unexpected error: Expecting findHandle and findPlatform to be populated');
+    }
+
     const exact = true;
 
     // This is a network call
@@ -13,19 +37,42 @@ export default function FindDidForUtuSignal() {
       await nextIdCheckAvatarService.getAvatarStatus(findHandle, findPlatform, exact);
 
     const idsItems = avatarStatusResponse.ids;
-    // setIdsItems(idsItems);
+    dispatch(utu_updateFindIdsItems(idsItems));
+  }
+
+  const reset = () => {
+
   }
 
   const getFindAvatarJSX = () => {
     return (
-      <div>
-        <div style={{ paddingTop: '20px' }}>
+      <div style={{ paddingTop: '20px' }}>
+        UTU Trust is an integrated partner to Symbiont Trust and is about seeing signal (feedback)
+        from people in your networks. The idea is you value signal from people in your network
+        more than strangers.
+        <p>
+          In order to participate in the UTU Trust Network you need to:
+        </p>
+        <ul>
+          <li>
+            Connect your social media networks to UTU Trust at:
+            <br /><br />
+            <a href="https://app.utu.io/connect">https://app.utu.io/connect</a>
+            <br /><br />
+            You earn UTU tokens when you connect a network like Telegram. You can then use these
+            tokens to endorse an asset such as a DID.
+            <br /><br />&nbsp;
+          </li>
+          <li>
+            Buy a montly membership to view signal. You will be prompted for Membership when
+            you try to view signal.
+          </li>
+        </ul>
+        <div>
           To Endorse, Give Signal, or Get Signal for a next.id avatar DID you need to first of all
-          find the DID.
-          <br /><br />
-          To find the DID:
+          find the DID:
           <ul>
-            <li>Select the platform you want to search in from the dropdown</li>
+            <li>Select the platform you want to search for from the dropdown</li>
             <li>Type the handle in the box</li>
           </ul>
           Note if the person does not have a next.id avatar DID you will not find them.
@@ -42,7 +89,7 @@ export default function FindDidForUtuSignal() {
           &nbsp;&nbsp;
           <select id="selectPlatform"
             value={findPlatform}
-            onChange={(event) => { setFindPlatform(event.target.value) }}
+            onChange={(event) => { dispatch(utu_updateFindPlatform(event.target.value)) }}
             className={appStyle.input}
           >
             <option value="">Select...</option>
@@ -59,7 +106,7 @@ export default function FindDidForUtuSignal() {
             type="text"
             id="yourTextBox"
             value={findHandle}
-            onChange={(event) => { setFindHandle(event.target.value) }}
+            onChange={(event) => { dispatch(utu_updateFindHandle(event.target.value)) }}
             className={appStyle.input}
             style={{ width: '400px' }}
           />
@@ -71,9 +118,9 @@ export default function FindDidForUtuSignal() {
             disabled={!(findPlatform.length > 0 || findHandle.length > 0)}>Reset</button>
         </div>
         <br /><hr /><br />
-        <SelectNextIdDID idsItems={idsItems} />
+        <SelectNextIdDID idsItems={findIdsItems} />
         <br /><br /><hr />
-      </div>
+      </div >
     )
   }
 

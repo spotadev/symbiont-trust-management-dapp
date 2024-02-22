@@ -10,12 +10,12 @@ export default function LinkExplanation() {
       <div>
         <p>
           Go to
-          <Link to={'/docs'}>
+          <Link to={'/next-id-management'}>
             &nbsp;
-            Docs
+            Avatar Management
             &nbsp;
           </Link>
-          to see a more detailed explanation of what Symbiont Trust is about
+          to get proof that you own social media handles
         </p>
       </div>
       <hr />
@@ -31,7 +31,7 @@ export default function LinkExplanation() {
         </p>
         <div>
           <ul>
-            <li>build your Symbiont Trust Profile</li>
+            <li>build your Symbiont Trust Profile that others will see.</li>
             <li>to find an Avatar DID and give / get Symbiont Trust signal on it.</li>
           </ul>
           <p>
@@ -51,6 +51,18 @@ export default function LinkExplanation() {
             &nbsp;
           </Link>
           to find an Avatar DID and give / get UTU Trust signal on it.
+        </p>
+      </div>
+      <hr />
+      <div>
+        <p>
+          Go to
+          <Link to={'/docs'}>
+            &nbsp;
+            Docs
+            &nbsp;
+          </Link>
+          to read a more detailed explanation of what Symbiont Trust is about
         </p>
       </div>
       <hr />

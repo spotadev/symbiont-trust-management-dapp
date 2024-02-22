@@ -40,7 +40,7 @@ export default function SymbiontTrust() {
           </li>
           <li>
             <Link to={'/give-symbiont-trust-signal'}>
-              Search for another DID and give Symbiont Trust Signal on that
+              Search for another DID and give Symbiont Trust Signal / Endorsements on that
             </Link>
           </li>
         </ul>
