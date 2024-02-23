@@ -45,7 +45,12 @@ export default function UtuTrust() {
       </div>
       <hr />
       <div style={{ paddingTop: '20px' }}>
-        With UTU Trust you can search for a DID and then see or give signal on the DID:
+        UTU Trust is provided by a partner. There is a small monthly fee for viewing signal which
+        is paid via an unlock membership.  You can give signal or free. This fee is payable to
+        UTU Trust.
+        <p>
+          With UTU Trust you can search for a DID and then see or give signal on the DID:
+        </p>
         <div style={{ paddingTop: '20px', paddingLeft: '20px' }}>
           <Link to={'/utu-trust/find-did-for-utu-signal'}>
             Search for DIDs

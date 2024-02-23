@@ -28,41 +28,38 @@ export default function SymbiontTrust() {
       <div style={{ paddingTop: '20px' }}>
         With Symbiont Trust you can do the following
         <ul>
-          <li>
+          <li style={{ marginBottom: '10px' }}>
             <Link to={'/symbiont-trust/configure-symbiont-trust-profile'}>
               Configure a Symbiont Trust Profile
             </Link>
           </li>
-          <li>
+          <li style={{ marginBottom: '10px' }}>
             <Link to={'/symbiont-trust/preview-symbiont-trust-profile'}>
               Preview your Symbiont Trust Profile
             </Link>
           </li>
-          <li>
+          <li style={{ marginBottom: '10px' }}>
             <Link to={'/symbiont-trust/signal'}>
-              Search for another DID by interests you configured in your profile above
+              Find a DID / Manage Friends / Give and See Signal
             </Link>
-            <ul>
-              <li>Make a Friend Request</li>
-              <li>Receive acceptance of your Friend Request</li>
-              <li>a
-                Take note of which social media platforms they are on and connect to them on those
-                platorms
-              </li>
-              <li>
-                Once you know them, endorse them as being knowledgable in your area of interest.
-              </li>
-            </ul>
           </li>
         </ul>
+        <p>
+          Symbiont Trust is about finding friends that share a similar interest.  Once you get
+          to know them you can endorse them as being knowledgable in the area of interest.
+        </p>
         <p>
           The idea with your Symbiont Trust Profile is that it is associated with your
           DID and can be consumed by other Apps.
         </p>
         <p>
-          For example, with an App which consumes the Symbiont Trust API, there will appear a
+          For example, within an App that consumes the Symbiont Trust API, there will appear a
           Symbiont Trust icon next to your username. If other users click on that icon they will
           see your Symbiont Trust profile page.
+        </p>
+        <p>
+          This is a form of personhood which mitigates the risk of malicious actors or bots
+          publishing fake information to meet nefarious goals.
         </p>
       </div>
       <hr />

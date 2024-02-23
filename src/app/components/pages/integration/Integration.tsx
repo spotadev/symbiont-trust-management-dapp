@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import appStyle from '../../../../App.module.css';
-import LinkExplanation from "./children/LinkExplanation";
 
-export default function Home() {
+export default function Integration() {
 
   return (
     <div>
       <div style={{ textAlign: 'right' }}>
+        <Link to={'/home'} style={{ paddingLeft: '15px' }}>
+          Home
+        </Link>
         <Link to={'/next-id-management'} style={{ paddingLeft: '15px' }}>
           Avatar Management
         </Link>
@@ -19,30 +20,25 @@ export default function Home() {
         <Link to={'/docs'} style={{ paddingLeft: '15px' }}>
           Docs
         </Link>
-        <Link to={'/integration'} style={{ paddingLeft: '15px' }}>
-          Integration
-        </Link>
         <Link to={'/about'} style={{ paddingLeft: '15px' }}>
           About
         </Link>
       </div>
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
-        Home
+        Integration
       </div>
       <hr />
       <div>
         <p>
-          This software creates a Decentralised ID which has a Symbiont Trust Profile associated
-          with it. The DID is associated with a wallet address. The owner of the wallet address can
-          configure what information is included in their profile.
+          This software manages Decentralised ID which has a Symbiont Trust Profile associated
+          with it. You can integrate the Symbiont Trust Profile into your softwares.
         </p>
         <p>
-          This DID can then be consumed by other applications.  These other applications can
-          display an icon next to someone who has this DID. This allows the users of the sotware
-          to see Trust metrics on the user.
+          This means that you can show a Symbiont Trust Profile icon next to any user which has
+          one. If users click on the profile icon they will see all the profile information the
+          user wanted to share with the world.
         </p>
       </div>
-      <LinkExplanation />
-    </div>
+    </div >
   );
 }

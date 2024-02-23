@@ -12,34 +12,39 @@ export default function FindDidForSymbiontTrust() {
         </Link>
       </div>
       <div style={{ color: 'green', fontWeight: 'bold', paddingTop: '20px' }}>
-        Search For DIDs
+        Find a DID / Manage Friends / Give and See Signal
       </div>
       <hr />
       <div style={{ textAlign: 'right' }}>
+        <span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Manage Friends:</span>
         <Link to={'/friend-requests'} style={{ paddingLeft: '15px' }}>
-          Friends
+          Current Ones
         </Link>
         <Link to={'/friend-requests'} style={{ paddingLeft: '15px' }}>
-          Requests to you
+          In Requests
         </Link>
         <Link to={'/friend-requests'} style={{ paddingLeft: '15px' }}>
-          Requests to others
-        </Link>
-        <Link to={'/friend-requests'} style={{ paddingLeft: '15px' }}>
-          Request by email
+          Out Requests
         </Link>
         <Link to={'/friend-requests'} style={{ paddingLeft: '15px' }}>
           Still to Endorse
         </Link>
+        <Link to={'/friend-requests'} style={{ paddingLeft: '15px' }}>
+          Suggested to you
+        </Link>
       </div>
       <p>
-        You can search by platform or interest.  Note the interests you can search by are the
-        ones you configured under:
+        You can also search for friends by social media platform and handle or you can
+        search for new friends by interest.
+      </p>
+      <p>
+        Note the interests you can search by are the ones you configured under:
         <Link to={'/symbiont-trust'} style={{ paddingLeft: '15px' }}>
           Symbiont Trust
         </Link>
       </p>
       <p>
+        Search by: &nbsp;
         <input type="radio" id="option1" name="option" value="Option 1"
           checked={true}
           onChange={() => { }} />

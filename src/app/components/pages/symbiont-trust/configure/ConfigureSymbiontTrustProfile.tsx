@@ -43,6 +43,34 @@ export default function ConfigureSymbiontTrustProfile() {
       <hr />
       <div style={{ paddingTop: '20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ width: '25%' }}>Profile Image</div>
+          <div style={{ width: '60%' }}>
+            <ul>
+              <li>None</li>
+            </ul>
+          </div>
+          <div style={{ width: '15%' }}>
+            <button>Change</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div style={{ paddingTop: '20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ width: '25%' }}>Profile Text:</div>
+          <div style={{ width: '60%' }}>
+            <ul>
+              <li>None</li>
+            </ul>
+          </div>
+          <div style={{ width: '15%' }}>
+            <button>Change</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div style={{ paddingTop: '20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ width: '25%' }}>Achievement Unlock / NFTs</div>
           <div style={{ width: '60%' }}>
             <ul>
@@ -84,6 +112,42 @@ export default function ConfigureSymbiontTrustProfile() {
             </div>
             <div style={{ width: '50%' }}>
               Names / Nicknames
+            </div>
+            <div style={{ width: '45%' }}>
+              <a href="">Help</a>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '10px' }}>
+            <div style={{ width: '5%' }}>
+              <input type="checkbox" />
+            </div>
+            <div style={{ width: '50%' }}>
+              Profile Image
+            </div>
+            <div style={{ width: '45%' }}>
+              <a href="">Help</a>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '10px' }}>
+            <div style={{ width: '5%' }}>
+              <input type="checkbox" />
+            </div>
+            <div style={{ width: '50%' }}>
+              Profile Text
+            </div>
+            <div style={{ width: '45%' }}>
+              <a href="">Help</a>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '10px' }}>
+            <div style={{ width: '5%' }}>
+              <input type="checkbox" />
+            </div>
+            <div style={{ width: '50%' }}>
+              Verified Social Media Handles
             </div>
             <div style={{ width: '45%' }}>
               <a href="">Help</a>

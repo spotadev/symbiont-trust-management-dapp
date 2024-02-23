@@ -50,7 +50,20 @@ export default function LinkExplanation() {
             UTU Trust
             &nbsp;
           </Link>
-          to find an Avatar DID and give / get UTU Trust signal on it.
+          to find a DID / Manage Friends / Give and See Signal
+        </p>
+      </div>
+      <hr />
+      <div>
+        <p>
+          Go to
+          <Link to={'/integration'}>
+            &nbsp;
+            Integration
+            &nbsp;
+          </Link>
+          if you are a software developer and are interested in integrating your software with
+          the Symbiont Trust API.
         </p>
       </div>
       <hr />
